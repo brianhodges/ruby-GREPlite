@@ -5,8 +5,7 @@ if ARGV.size != 2
 	exit
 end
 
-dir = ARGV[0].strip.to_s
-search = ARGV[1].strip.to_s
+dir, search = ARGV[0].strip.to_s, ARGV[1].strip.to_s
 matches = []
 
 Dir.foreach(dir) do |file|
@@ -16,6 +15,7 @@ Dir.foreach(dir) do |file|
 		text.each_line{ |line| matches << path if line.include? search }
 	end
 end
+
 puts 'Results:'
 puts '========'
 puts !matches.empty? ? matches.each{|filename| filename } : 'No matches found.'
