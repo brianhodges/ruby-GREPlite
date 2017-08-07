@@ -10,21 +10,13 @@ if dir && search
 			path = dir + '\\' + file
 			text = File.open(path).read
 			text.each_line do |line|
-				if line.to_s.include? search
-					matches << path  
-				end
+				matches << path if line.include? search
 			end
 		end
 	end
 	puts 'Results:'
 	puts '========'
-	if !matches.empty?
-		matches.each do |filename|
-			puts filename
-		end
-	else
-		puts 'No matches found.'
-	end
+	puts !matches.empty? ? matches.each{|filename| filename } : 'No matches found.'
 else
 	puts 'You must enter both parameters.'
 	puts 'Ex. ruby grep.rb C:\path\to\directory "pattern match"'
