@@ -6,7 +6,7 @@ puts
 puts
 if dir && search
 	Dir.foreach(dir) do |file|
-		if file != '.' && file != '..'
+		if file.length > 3
 			path = dir + '\\' + file
 			text = File.open(path).read
 			text.each_line do |line|
